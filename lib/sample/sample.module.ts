@@ -9,6 +9,5 @@ import {SampleComponent} from './sample.component';
   declarations: [SampleComponent],
   exports: [SampleComponent]
 })
-export class GreeterModule {
+export class SampleModule {
 }
-
