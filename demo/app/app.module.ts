@@ -4,16 +4,18 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
-import {NotificationModule} from "../../lib/notification/notification.module";
+import {NotificationModule} from "../../lib/notification.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
     NotificationModule
   ],
   providers: [],

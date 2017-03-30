@@ -1,1 +1,2 @@
-<a-noty-notification></a-noty-notification>
+<button (click)="showNotification();">Show Notification</button>
+<a-noty-notification-container *ngIf="isShown"></a-noty-notification-container>

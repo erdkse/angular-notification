@@ -1,15 +1,3 @@
-#noty_bottomRight_layout_container {
-  bottom: 20px;
-  right: 20px;
-  position: fixed;
-  width: 310px;
-  height: auto;
-  margin: 0px;
-  padding: 0px;
-  list-style-type: none;
-  z-index: 10000000;
-}
-
 .erdkse-noty {
   overflow: hidden;
   margin: 4px 0px;
