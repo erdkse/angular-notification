@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
+import {NotificationContainerComponent} from "../../lib/notification-container/notification-container.component";
 
 @Component({
   selector: 'a-noty-root',
@@ -7,9 +8,13 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'a-noty works!';
-  private isShown: boolean = false;
+  @ViewChild(NotificationContainerComponent) notificationContainer: NotificationContainerComponent;
 
   showNotification() {
-    this.isShown = this.isShown ? false : true;
+    this.notificationContainer.pushToArray();
+  }
+
+  deleteNotification() {
+    this.notificationContainer.deleteFromArray();
   }
 }

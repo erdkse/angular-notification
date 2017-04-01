@@ -1,9 +1,8 @@
+import {NotificationType} from "./notification-type.object";
+
 export class NotificationObject {
-  id: string;
-  text: string;
-  icon: string;
-  type: string;
-  position: string;
-  theme: string;
-  animation: string
+  public ID: number;
+  public type: NotificationType;
+  public title: string;
+  public message: string;
 }

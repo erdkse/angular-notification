@@ -1,6 +1,7 @@
-<ul class="noty-top-right">
+<ul class="notification-container bottom-right">
   <a-noty-notification
-    *ngFor="let i of sampleArray"
-    (click)="close()">
+    *ngFor="let notification of notificationList"
+    (onDestroyMe)="removeNotificationByID($event);"
+    [notificationObject]="notification">
   </a-noty-notification>
 </ul>

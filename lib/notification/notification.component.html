@@ -1,11 +1,18 @@
-<li class="erdkse-noty animated bounceInRight" [@notyState]>
-  <div class="noty_message">
-        <span class="noty_text">
-          <div class="activity-item">
-          <i class="fa fa-tasks text-warning"></i>
-          <div class="activity"> There are <a href="#">6 new tasks</a> waiting for you. Don't forget! <span>About 3 hours ago</span>
-          </div>
-          </div>
-        </span>
+<li [@notyState] (click)="onClick()" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()">
+  <div class="notification"
+       [ngClass]="{
+       'notification-success' : notificationObject.type == notificationType.SUCCESS,
+       'notification-error' : notificationObject.type == notificationType.ERROR}">
+    <button *ngIf="false" class="cancel-button" type="button">×</button>
+    <h4 class="notification-title">
+      <div class="notification-icon"
+           [ngClass]="{
+       'notification-icon-success' : notificationObject.type == notificationType.SUCCESS,
+       'notification-icon-error' : notificationObject.type == notificationType.ERROR}"></div>
+      {{notificationObject.title}}
+    </h4>
+    <div class="notification-message">
+      {{notificationObject.message}}
+    </div>
   </div>
 </li>
