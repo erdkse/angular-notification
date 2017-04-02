@@ -1,3 +1,14 @@
-<button (click)="showNotification();">Show Notification</button>
-<button (click)="deleteNotification();">Delete Notification</button>
-<a-noty-notification-container></a-noty-notification-container>
+<div class="container">
+  <label class="notification-types-title">
+    Notification Types
+  </label>
+  <select class="notification-types" [(ngModel)]="selectedType">
+    <option *ngFor="let notificationType of notificationTypes"
+            [ngValue]="notificationType">{{notificationType.name}}
+    </option>
+  </select>
+  <hr>
+  <button (click)="showNotification();">Show Notification</button>
+  <button (click)="deleteNotification();">Delete Notification</button>
+  <a-noty-notification-container></a-noty-notification-container>
+</div>

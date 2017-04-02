@@ -2,17 +2,27 @@
   <div class="notification"
        [ngClass]="{
        'notification-success' : notificationObject.type == notificationType.SUCCESS,
-       'notification-error' : notificationObject.type == notificationType.ERROR}">
+       'notification-error' : notificationObject.type == notificationType.ERROR,
+       'notification-info' : notificationObject.type == notificationType.INFO,
+       'notification-warning' : notificationObject.type == notificationType.WARNING}">
     <button *ngIf="false" class="cancel-button" type="button">×</button>
     <h4 class="notification-title">
       <div class="notification-icon"
            [ngClass]="{
        'notification-icon-success' : notificationObject.type == notificationType.SUCCESS,
-       'notification-icon-error' : notificationObject.type == notificationType.ERROR}"></div>
+       'notification-icon-error' : notificationObject.type == notificationType.ERROR,
+       'notification-icon-info' : notificationObject.type == notificationType.INFO,
+       'notification-icon-warning' : notificationObject.type == notificationType.WARNING}">
+      </div>
       {{notificationObject.title}}
     </h4>
     <div class="notification-message">
       {{notificationObject.message}}
+    </div>
+  </div>
+  <div class="notification-progress">
+    <div class="notification-progress-status" [style.width]="progressBarPercentage+'%'">
+      <span class="notification-progress-text">{{progressBarPercentage}}% Complete</span>
     </div>
   </div>
 </li>

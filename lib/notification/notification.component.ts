@@ -76,17 +76,22 @@ export class NotificationComponent implements OnInit,OnDestroy {
   @Output() onDestroyMe: EventEmitter<number> = new EventEmitter();
   private notificationType = NotificationType;
   private timerSubscription: Subscription;
-  private totalTimerCount = 0;
+  private totalTimerCount: number = 0;
+  private maxTimerCount: number = 40;
+  private isMouseHover: boolean = false;
+  private progressBarPercentage = 0;
 
   constructor() {
     let timer = Observable.timer(0, 100);
     this.timerSubscription = timer.subscribe(
       count => {
-        this.totalTimerCount = count;
-/*        if (this.totalTimerCount > 50) {
-          this.onDestroyMe.emit(this.notificationObject.ID);
-        }*/
-        //console.log(count);
+        if (!this.isMouseHover) {
+          this.totalTimerCount++;
+          this.progressBarPercentage = (this.totalTimerCount * 100) / this.maxTimerCount;
+          if (this.totalTimerCount > this.maxTimerCount) {
+            this.onDestroyMe.emit(this.notificationObject.ID);
+          }
+        }
       }
     );
   }
@@ -105,11 +110,11 @@ export class NotificationComponent implements OnInit,OnDestroy {
   }
 
   onMouseOver() {
-    console.log("onMouseOver")
+    this.isMouseHover = true;
   }
 
   onMouseLeave() {
-    console.log("onMouseLeave");
+    this.isMouseHover = false;
   }
 
 

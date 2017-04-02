@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {NotificationObject} from "../objects/notification.object";
-import {NotificationType} from "../objects/notification-type.object";
 
 @Component({
   selector: 'a-noty-notification-container',
@@ -9,18 +8,20 @@ import {NotificationType} from "../objects/notification-type.object";
 })
 export class NotificationContainerComponent implements OnInit {
 
-  private notificationList = [];
+  private notificationList: Array<NotificationObject> = [];
+
+  private ID: number = 0;
 
   constructor() {
   }
 
-  pushToArray() {
-    var notificationObject = new NotificationObject();
-    notificationObject.ID = this.notificationList.length;
-    notificationObject.type = NotificationType.SUCCESS;
-    notificationObject.title = "Selam";
-    notificationObject.message = "İşlem başarılı";
-    this.notificationList.push(notificationObject);
+  ngOnInit() {
+  }
+
+  pushToArray(notification: NotificationObject) {
+    notification.ID = this.ID;
+    this.notificationList.unshift(notification);
+    this.ID++;
   }
 
   deleteFromArray() {
@@ -28,10 +29,15 @@ export class NotificationContainerComponent implements OnInit {
   }
 
   removeNotificationByID(event) {
-    this.notificationList.splice(event, 1);
+    this.notificationList.splice(this.findNotificationPositionByID(event), 1);
   }
 
-  ngOnInit() {
+  private findNotificationPositionByID(ID: number) {
+    for (var i = 0; i < this.notificationList.length; i++) {
+      if (this.notificationList[i].ID == ID) {
+        return i;
+      }
+    }
+    return -1;
   }
-
 }
